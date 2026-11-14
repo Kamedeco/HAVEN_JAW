@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://0qb8nrp1tavl"]
+
+[ext_resource type="Texture2D" uid="uid://dyr15cavs7sfm" path="res://Scripts/Charecter.png" id="1_4flbx"]
+
+[node name="Player" type="CharacterBody2D" unique_id=206166448]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1099124222]
+texture = ExtResource("1_4flbx")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1748049311]
+zoom = Vector2(0.5, 0.5)
