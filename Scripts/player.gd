@@ -14,7 +14,8 @@ var reload_time = 0.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 ##@onready var animated_sprite = $AnimatedSprite2D
 func _on_ready():
-	print(position.y)
+	#print(position.y)
+	pass
 func _physics_process(delta):
 	
 	
@@ -72,13 +73,33 @@ func _physics_process(delta):
 			impulsed = true
 			reload_time = 0.0
 			velocity.y = vect.y*jump_force *-30
-		
+	#print(vect_y)	
 	if direction:
-		if impulsed == false:
+		if impulsed == false and is_on_floor():
 			velocity.x = direction * SPEED
 		#print(velocity.x)
-		elif impulsed == true:
+		elif impulsed == false and not is_on_floor():
+			velocity.x = direction * SPEED*0.2
+		elif impulsed == true and not is_on_floor():
+			velocity.x = SPEED*direction*0.5 + vect_x * jump_force
+			print("AAA")
+		elif impulsed == true and is_on_floor():
 			velocity.x = SPEED*direction + vect_x * jump_force
+			print("BBB")
+		if vect_x >0:
+			if velocity.x < vect_x:
+				vect_x = velocity.x
+			if velocity.x <1 :
+				vect_x = 0
+		elif vect_x <0:
+			if velocity.x > vect_x:
+				vect_x = velocity.x
+			if velocity.x >-1 :
+				vect_x = 0
+					
+			if velocity.x < vect_x or velocity.x > vect_x:
+				vect_x = velocity.x
+				
 		#print(velocity.x)
 	elif impulsed == true:
 		velocity.x = vect_x * jump_force
