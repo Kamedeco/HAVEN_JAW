@@ -1,10 +1,11 @@
 extends Node2D
-@onready var rich_text_label: RichTextLabel = $Ui/RichTextLabel
+@onready var rtl: RichTextLabel = $Ui/RichTextLabel
 @onready var tutorial: RichTextLabel = $Ui/Tutorial
 @onready var dialogue: RichTextLabel = $Ui/Dialogue
 @onready var animation_player: AnimationPlayer = $Ui/Dialogue/AnimationPlayer
 @onready var timer: Timer = $Timer
 @onready var _1a: TileMapLayer = $"1A"
+@onready var snapshot: AnimatedSprite2D = $Snapshot
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,6 +18,7 @@ func _ready() -> void:
 		for child in $Bushes.get_children():
 			if "visible" in child: 
 				child.hide() 
+	snapshot.play("No")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,9 +48,16 @@ func _process(delta: float) -> void:
 		timer.start()
 		
 		
+	if Input.is_action_just_pressed("photo"):
+		snapshot.show()
+		snapshot.position = Global.player_pos
+		snapshot.play("Rep")
+	if Global.checkpointed == false:
+		snapshot.play("no")
+		print(Global.checkpointed)
 	else:
 		pass
-		#rtl.text = "[center][b]Film: [/b]" + str(Global.player_film) + "[/center] + Checkpoint? " + str(Global.checkpointed) + " Ammo " + str(Global.player_ammo) 
+	rtl.text = "[center][b]Film: [/b]" + str(Global.player_film) + "[/center] + Checkpoint? " + str(Global.checkpointed) + " Ammo " + str(Global.player_ammo) 
 		#tutorial.text = "[font_size=32] [wave][rainbow] [center] Right click to take a photo. 
 #If you die your photo location will be your respawn point.
 	##	dialogue.text = "[font_size=32][center]I need to deliver this pizza. "

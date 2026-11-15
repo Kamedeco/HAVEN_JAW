@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dbmf3xib7fjbk" path="res://scenes/world.gd" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://bpq8hsp2jr8b5" path="res://scenes/canister.tscn" id="2_i7141"]
 [ext_resource type="PackedScene" uid="uid://27g4lyefjkcm" path="res://scenes/Film.tscn" id="3_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://ewidjqys6iya" path="res://scenes/Snapshot.tscn" id="4_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://r7ss8n8lmcmj" path="res://Tile sets/grass_tile_set.png" id="4_k0juu"]
 [ext_resource type="PackedScene" uid="uid://cn5j3rgk41guo" path="res://scenes/killzone.tscn" id="5_71j4m"]
 [ext_resource type="Texture2D" uid="uid://ctyvloipkcm1s" path="res://Tile sets/wood_tile_set.png" id="7_4mrxx"]
@@ -3227,6 +3228,9 @@ animation = &"4"
 [node name="Bush18" parent="Bushes" unique_id=1847999494 instance=ExtResource("9_7r4gi")]
 position = Vector2(1681, -75)
 animation = &"4"
+
+[node name="Snapshot" parent="." unique_id=205132606 instance=ExtResource("4_7r4gi")]
+position = Vector2(-71, 457)
 
 [connection signal="animation_finished" from="Ui/Dialogue/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

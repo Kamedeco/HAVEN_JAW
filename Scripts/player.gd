@@ -1,5 +1,8 @@
 extends CharacterBody2D
 @onready var arm_2: AnimatedSprite2D = $Arm2
+@onready var snapshot: AnimatedSprite2D = $Snapshot
+
+
 var my_direction = 1
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -72,6 +75,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot"):
 		if reload_time > 1:
 			shoot()
+			
 			Global.player_ammo -= 1
 			var vect = get_global_mouse_position() - position
 			vect = vect.normalized()*200
