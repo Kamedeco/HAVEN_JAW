@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@onready var arm: Sprite2D = $Arm
+@onready var arm_2: AnimatedSprite2D = $Arm2
 
 var my_direction = 1
 const SPEED = 300.0
@@ -16,6 +16,11 @@ var reload_time = 0.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 ##@onready var animated_sprite = $AnimatedSprite2D
 func _on_ready():
+	Global.player_ammo = 5
+	Global.player_film = 5
+	Global.film_multiple = 1
+	Global.checkpoint = Vector2(0, 0)
+	Global.checkpointed = false
 	#print(position.y)
 	pass
 func _physics_process(delta):
@@ -68,22 +73,31 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot"):
 		if reload_time > 1:
 			shoot()
+			Global.player_ammo -= 1
 			var vect = get_global_mouse_position() - position
-			vect_x = vect.x*jump_force *-300
-			vect_y = vect.y*jump_force *1
+			vect = vect.normalized()*200
+			vect_x = vect.x*jump_force *-250
+			vect_y = vect.y*jump_force *0.1
 			#print(velocity.x)
 			impulsed = true
 			reload_time = 0.0
-			velocity.y = vect.y*jump_force *-30
+			velocity.y = vect.y*jump_force *-15
+#ANIMATION YIPPPEEE
+	var vect_anim = get_global_mouse_position() - position
+	var vect_anim_x = vect_anim.x
+	if vect_anim_x <0:
+		arm_2.play("mid")
+	elif vect_anim_x >0:
+		arm_2.play("front")
 	#print(vect_y)	
 	if direction:
 		if impulsed == false and is_on_floor():
 			velocity.x = direction * SPEED
 		#print(velocity.x)
 		elif impulsed == false and not is_on_floor():
-			velocity.x = direction * SPEED*0.2
+			velocity.x = direction * SPEED*0.8
 		elif impulsed == true and not is_on_floor():
-			velocity.x = SPEED*direction*0.5 + vect_x * jump_force
+			velocity.x = SPEED*direction*0.8 + vect_x * jump_force
 			print("AAA")
 		elif impulsed == true and is_on_floor():
 			velocity.x = SPEED*direction + vect_x * jump_force
@@ -116,12 +130,15 @@ func _physics_process(delta):
 	#print(reload_time)
 	# Add the gravity.
 		##velocity.y 
-	$Arm.look_at(get_global_mouse_position())
+	$Arm2.look_at(get_global_mouse_position())
 	move_and_slide()
 	#print(impulsed)
 
-	
-
+	if Input.is_action_just_pressed("photo"):
+		Global.checkpoint = global_position
+		Global.checkpointed = true
+		print(Global.checkpoint)
+		Global.player_film -= 1
 
 ##func _on_vending_machine_body_entered(body: Node2D) -> void:
 	##interactable = true
@@ -131,7 +148,8 @@ func shoot():
 	
 	pass
 	
-
+func respawn():
+	global_position = Global.checkpoint
 	
 	##var b = Bullet.instantiate()
 	##owner.add_child(b)
