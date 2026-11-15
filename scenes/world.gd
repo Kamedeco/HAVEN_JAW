@@ -4,11 +4,19 @@ extends Node2D
 @onready var dialogue: RichTextLabel = $Ui/Dialogue
 @onready var animation_player: AnimationPlayer = $Ui/Dialogue/AnimationPlayer
 @onready var timer: Timer = $Timer
+@onready var _1a: TileMapLayer = $"1A"
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	print(Global.attempt)
+	if Global.attempt == 0:
+		$"1A".enabled = true
+	else:
+		$"1A".enabled = false
+		for child in $Bushes.get_children():
+			if "visible" in child: 
+				child.hide() 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,7 +32,7 @@ func _process(delta: float) -> void:
 	elif Global.player_pos.x <1500 and Global.player_pos.x >1200:
 		tutorial.text = "[font_size=32] [wave][rainbow] [center] RIGHT CLICK TO TAKE A PHOTO (place checkpoint, each checkpoint can only be used once)"
 	elif Global.player_pos.x <1800 and Global.player_pos.x >1500:
-		tutorial.text = "[font_size=32] [wave][rainbow] [center] GOOD)"
+		tutorial.text = "[font_size=32] [wave][rainbow] [center] GOOD LUCK!"
 	if Global.player_pos.x > 300 and Global.diaCount == 0:
 		dialogue.text = "[font_size=25] [center] I have to deliver this pizza."
 		animation_player.play("fade in")

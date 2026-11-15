@@ -11,6 +11,7 @@ func _on_body_entered(body: Node2D) -> void:
 		else:
 			body.get_node("CollisionShape2D").queue_free()
 			timer.start()
+			Global.attempt +=1
 		pass # Replace with function body.
 
 

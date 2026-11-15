@@ -3,40 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://0qb8nrp1tavl" path="res://scenes/player.tscn" id="1_nnsk1"]
 [ext_resource type="Script" uid="uid://dbmf3xib7fjbk" path="res://scenes/world.gd" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://bpq8hsp2jr8b5" path="res://scenes/canister.tscn" id="2_i7141"]
-[ext_resource type="Texture2D" uid="uid://o0ak5jlkmw4i" path="res://Sprites/BasicWalls.png" id="2_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://27g4lyefjkcm" path="res://scenes/Film.tscn" id="3_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://r7ss8n8lmcmj" path="res://Tile sets/grass_tile_set.png" id="4_k0juu"]
 [ext_resource type="PackedScene" uid="uid://cn5j3rgk41guo" path="res://scenes/killzone.tscn" id="5_71j4m"]
 [ext_resource type="Texture2D" uid="uid://ctyvloipkcm1s" path="res://Tile sets/wood_tile_set.png" id="7_4mrxx"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]
-texture = ExtResource("2_rwgxs")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-2:0/0 = 0
-3:0/0 = 0
-0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-2:1/0 = 0
-3:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_djfxq"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_4wyf3")
+[ext_resource type="PackedScene" uid="uid://bojjphrs12pf3" path="res://scenes/bush.tscn" id="9_7r4gi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k0juu"]
 texture = ExtResource("4_k0juu")
@@ -3113,10 +3084,8 @@ position = Vector2(1010, -124)
 scale = Vector2(2, 2)
 
 [node name="Player" parent="." unique_id=206166448 instance=ExtResource("1_nnsk1")]
+z_index = 2
 position = Vector2(-190, -7)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1471159314]
-tile_set = SubResource("TileSet_djfxq")
 
 [node name="Area2D" parent="." unique_id=567670627 instance=ExtResource("3_4wyf3")]
 position = Vector2(1323, -55)
@@ -3178,6 +3147,86 @@ text = "[wave][rainbow] [center] Collect film to place more respawn points."
 
 [node name="Timer" type="Timer" parent="." unique_id=206183659]
 wait_time = 4.0
+
+[node name="TILEMAPS" type="Node" parent="." unique_id=1904259538]
+
+[node name="2A" type="TileMapLayer" parent="TILEMAPS" unique_id=436075883]
+tile_map_data = PackedByteArray("AAA/AP7/AAABAAAAAAA/AP//AAAAAAEAAAA/AAAAAAAAAAEAAAA/AAEAAAAAAAEAAAA/AAIAAAAAAAEAAAA/AAMAAAAAAAEAAAA/AAQAAAAAAAEAAAA/AAUAAAAAAAEAAAA/AAYAAAAAAAEAAAA/AAcAAAAAAAEAAAA/AAgAAAAAAAEAAAA/AAkAAAAAAAEAAAA/AAoAAAAAAAEAAAA/AAsAAAAAAAEAAABAAP7/AAAAAAAAAABBAP7/AAAAAAAAAABbAP7/AAABAAAAAABcAP7/AAAAAAAAAABdAP7/AAACAAAAAABIAPv/AAACAAAAAABHAPv/AAABAAAAAABIAPz/AAADAAAAAABHAPz/AAAEAAAAAABSAAEAAAABAAAAAABTAAEAAAAAAAAAAABUAAEAAAAAAAAAAABVAAEAAAACAAAAAABDAP7/AQAAAAAAAABJAAEAAQAAAAEAAABJAAIAAQAAAAEAAABJAAMAAQAAAAEAAABJAAQAAQAAAAEAAABJAAAAAQABAAMAAABNAAAAAQAAAAMAAABJAAUAAQAAAAEAAABJAAYAAQAAAAEAAABJAAcAAQAAAAEAAABJAAgAAQAAAAEAAABJAAkAAQAAAAEAAABJAAoAAQAAAAEAAABJAAsAAQAAAAEAAABNAAEAAQAAAAEAAABNAAIAAQAAAAEAAABNAAMAAQAAAAEAAABNAAQAAQAAAAEAAABNAAUAAQAAAAEAAABNAAYAAQAAAAEAAABNAAcAAQAAAAEAAABNAAgAAQAAAAEAAABNAAkAAQAAAAEAAABNAAoAAQAAAAEAAABNAAsAAQAAAAEAAABCAP7/AAACAAAAAABCAP//AAAAAAIAAABCAAAAAAAAAAIAAABCAAEAAAAAAAIAAABCAAIAAAAAAAIAAABCAAMAAAAAAAIAAABCAAQAAAAAAAIAAABCAAUAAAAAAAIAAABCAAYAAAAAAAIAAABCAAcAAAAAAAIAAABCAAgAAAAAAAIAAABCAAkAAAAAAAIAAABCAAoAAAAAAAIAAABCAAsAAAAAAAIAAABAAP//AAADAAIAAABAAAAAAAADAAIAAABAAAEAAAADAAIAAABAAAIAAAADAAIAAABAAAMAAAADAAIAAABAAAQAAAADAAIAAABAAAUAAAADAAIAAABAAAYAAAADAAIAAABAAAcAAAADAAIAAABAAAgAAAADAAIAAABAAAkAAAADAAIAAABAAAoAAAADAAIAAABBAP//AAADAAIAAABBAAAAAAADAAIAAABBAAEAAAADAAIAAABBAAIAAAADAAIAAABBAAMAAAADAAIAAABBAAQAAAADAAIAAABBAAUAAAADAAIAAABBAAYAAAADAAIAAABBAAcAAAADAAIAAABBAAgAAAADAAIAAABBAAkAAAADAAIAAABBAAoAAAADAAIAAABKAAAAAQABAAIAAABLAAAAAQABAAIAAABMAAAAAQABAAIAAABYAP//AQABAAEAAABYAAAAAQAAAAEAAABYAAEAAQAAAAEAAABYAAIAAQAAAAEAAABYAAMAAQAAAAEAAABYAAQAAQAAAAEAAABYAAUAAQAAAAEAAABYAAYAAQAAAAEAAABYAAcAAQAAAAEAAABYAAgAAQAAAAEAAABYAAkAAQAAAAEAAABYAAoAAQAAAAEAAABYAAsAAQAAAAEAAABYAAwAAQAAAAEAAABTAP7/AQACAAAAAABTAP//AQACAAAAAABTAAAAAQACAAAAAABSAP//AQACAAAAAABSAAAAAQACAAAAAABQAPr/AAAEAAAAAABQAPn/AAABAAAAAABUAAIAAAADAAIAAABUAAMAAAADAAIAAABUAAQAAAADAAIAAABUAAUAAAADAAIAAABUAAYAAAADAAIAAABTAAcAAAADAAIAAABTAAgAAAADAAIAAABTAAkAAAADAAIAAABTAAoAAAADAAIAAABTAAsAAAADAAIAAABSAAsAAAAAAAEAAABSAAwAAAADAAIAAABSAAoAAAAAAAEAAABUAAgAAAADAAIAAABUAAcAAAADAAIAAABTAAMAAAADAAIAAABTAAIAAAADAAIAAABTAAQAAAADAAIAAABTAAUAAAADAAIAAABTAAYAAAADAAIAAABUAAkAAAADAAIAAABSAAIAAAAAAAEAAABSAAMAAAAAAAEAAABSAAQAAAAAAAEAAABSAAUAAAAAAAEAAABSAAYAAAAAAAEAAABSAAcAAAAAAAEAAABSAAgAAAAAAAEAAABSAAkAAAAAAAEAAABVAAIAAAAAAAIAAABVAAMAAAAAAAIAAABVAAQAAAAAAAIAAABVAAUAAAAAAAIAAABVAAYAAAAAAAIAAABVAAcAAAAAAAIAAABVAAgAAAAAAAIAAABVAAkAAAAAAAIAAABVAAoAAAAAAAIAAABVAAsAAAAAAAIAAABUAAoAAAADAAIAAABUAAsAAAADAAIAAABSAP3/AAAEAAAAAABTAP3/AAADAAAAAABSAPz/AAAAAAEAAABTAPz/AAAAAAIAAABRAPn/AAAAAAAAAABSAPn/AAAAAAAAAABTAPn/AAACAAAAAABTAPr/AAAAAAIAAABTAPv/AAAAAAIAAABSAPr/AAABAAIAAABRAPr/AAADAAEAAABSAPv/AAAAAAEAAABSAP7/AQACAAAAAABdAAAAAAADAAAAAABbAAAAAAAEAAAAAABbAP//AAAAAAEAAABcAP//AAADAAIAAABdAP//AAAAAAIAAABcAAAAAAADAAEAAAA=")
+tile_set = SubResource("TileSet_ss3c0")
+
+[node name="Bushes" type="Node" parent="." unique_id=2063756576]
+
+[node name="Bush" parent="Bushes" unique_id=1983867055 instance=ExtResource("9_7r4gi")]
+position = Vector2(-47, 53)
+animation = &"4"
+
+[node name="Bush2" parent="Bushes" unique_id=139288613 instance=ExtResource("9_7r4gi")]
+position = Vector2(-92, 53)
+animation = &"4"
+
+[node name="Bush3" parent="Bushes" unique_id=1884201141 instance=ExtResource("9_7r4gi")]
+position = Vector2(-235, 21)
+animation = &"4"
+
+[node name="Bush4" parent="Bushes" unique_id=1304512820 instance=ExtResource("9_7r4gi")]
+position = Vector2(-156, 21)
+animation = &"4"
+
+[node name="Bush5" parent="Bushes" unique_id=941416546 instance=ExtResource("9_7r4gi")]
+position = Vector2(149, 21)
+animation = &"4"
+
+[node name="Bush6" parent="Bushes" unique_id=1041557530 instance=ExtResource("9_7r4gi")]
+position = Vector2(442, 21)
+animation = &"4"
+
+[node name="Bush7" parent="Bushes" unique_id=156524223 instance=ExtResource("9_7r4gi")]
+position = Vector2(552, 53)
+animation = &"4"
+
+[node name="Bush8" parent="Bushes" unique_id=1334365087 instance=ExtResource("9_7r4gi")]
+position = Vector2(460, 21)
+animation = &"4"
+
+[node name="Bush9" parent="Bushes" unique_id=158584636 instance=ExtResource("9_7r4gi")]
+position = Vector2(696, -10)
+animation = &"4"
+
+[node name="Bush10" parent="Bushes" unique_id=444826019 instance=ExtResource("9_7r4gi")]
+position = Vector2(736, -10)
+animation = &"4"
+
+[node name="Bush11" parent="Bushes" unique_id=1216692568 instance=ExtResource("9_7r4gi")]
+position = Vector2(905, 21)
+animation = &"4"
+
+[node name="Bush12" parent="Bushes" unique_id=1910205580 instance=ExtResource("9_7r4gi")]
+position = Vector2(1086, -107)
+animation = &"4"
+
+[node name="Bush13" parent="Bushes" unique_id=1672080948 instance=ExtResource("9_7r4gi")]
+position = Vector2(1100, -107)
+animation = &"4"
+
+[node name="Bush14" parent="Bushes" unique_id=69919195 instance=ExtResource("9_7r4gi")]
+position = Vector2(1114, -107)
+animation = &"4"
+
+[node name="Bush15" parent="Bushes" unique_id=1353092696 instance=ExtResource("9_7r4gi")]
+position = Vector2(1221, -43)
+animation = &"4"
+
+[node name="Bush16" parent="Bushes" unique_id=762681300 instance=ExtResource("9_7r4gi")]
+position = Vector2(1488, -75)
+animation = &"4"
+
+[node name="Bush17" parent="Bushes" unique_id=1354157014 instance=ExtResource("9_7r4gi")]
+position = Vector2(1591, -75)
+animation = &"4"
+
+[node name="Bush18" parent="Bushes" unique_id=1847999494 instance=ExtResource("9_7r4gi")]
+position = Vector2(1681, -75)
+animation = &"4"
 
 [connection signal="animation_finished" from="Ui/Dialogue/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

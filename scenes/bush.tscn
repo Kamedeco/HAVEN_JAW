@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bojjphrs12pf3"]
+
+[ext_resource type="Texture2D" uid="uid://boyx5vag5of5c" path="res://assets/plant_anim.png" id="1_ehqem"]
+[ext_resource type="Script" uid="uid://clw64w31by121" path="res://Scripts/bush.gd" id="2_tu87o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ftm5"]
+atlas = ExtResource("1_ehqem")
+region = Rect2(0, 0, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpk7d"]
+atlas = ExtResource("1_ehqem")
+region = Rect2(10, 0, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8g13"]
+atlas = ExtResource("1_ehqem")
+region = Rect2(0, 11, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x11nt"]
+atlas = ExtResource("1_ehqem")
+region = Rect2(10, 11, 10, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_djfxq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ftm5")
+}],
+"loop": 1,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpk7d")
+}],
+"loop": 1,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8g13")
+}],
+"loop": 1,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x11nt")
+}],
+"loop": 1,
+"name": &"4",
+"speed": 5.0
+}]
+
+[node name="Bush" type="AnimatedSprite2D" unique_id=1983867055]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_djfxq")
+animation = &"1"
+script = ExtResource("2_tu87o")
