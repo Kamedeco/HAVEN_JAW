@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://27g4lyefjkcm"]
+
+[ext_resource type="Texture2D" uid="uid://18bl1pyypurk" path="res://Sprites/FILMCAN.png" id="1_d7itd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3n2sl"]
+atlas = ExtResource("1_d7itd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8rsi"]
+atlas = ExtResource("1_d7itd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isepf"]
+atlas = ExtResource("1_d7itd")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds7uc"]
+atlas = ExtResource("1_d7itd")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wm30n"]
+atlas = ExtResource("1_d7itd")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7hy4"]
+atlas = ExtResource("1_d7itd")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qakvi"]
+atlas = ExtResource("1_d7itd")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ykh4"]
+atlas = ExtResource("1_d7itd")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_djfxq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3n2sl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8rsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isepf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ds7uc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wm30n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7hy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qakvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ykh4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D" unique_id=567670627]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=830831840]
+sprite_frames = SubResource("SpriteFrames_djfxq")
+frame_progress = 0.5346461

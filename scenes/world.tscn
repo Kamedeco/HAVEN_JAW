@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bakoni6un5ld5"]
 
-[ext_resource type="PackedScene" uid="uid://mrbwys7ucpu" path="res://scenes/player.tscn" id="1_nnsk1"]
+[ext_resource type="PackedScene" uid="uid://0qb8nrp1tavl" path="res://scenes/player.tscn" id="1_nnsk1"]
 [ext_resource type="Texture2D" uid="uid://o0ak5jlkmw4i" path="res://Sprites/BasicWalls.png" id="2_rwgxs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]

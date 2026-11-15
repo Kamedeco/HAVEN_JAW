@@ -1,4 +1,6 @@
 extends CharacterBody2D
+@onready var arm: Sprite2D = $Arm
+
 var my_direction = 1
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -114,6 +116,7 @@ func _physics_process(delta):
 	#print(reload_time)
 	# Add the gravity.
 		##velocity.y 
+	$Arm.look_at(get_global_mouse_position())
 	move_and_slide()
 	#print(impulsed)
 

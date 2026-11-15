@@ -1,7 +1,9 @@
-[gd_scene format=3 uid="uid://mrbwys7ucpu"]
+[gd_scene format=3 uid="uid://0qb8nrp1tavl"]
 
 [ext_resource type="Texture2D" uid="uid://dyr15cavs7sfm" path="res://Scripts/Charecter.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://dj2441aywkmeq" path="res://Scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://svljycfqii3e" path="res://assets/body.png" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://dnus4xqwurowv" path="res://assets/arm.png" id="4_dqkch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djfxq"]
 size = Vector2(46, 64)
@@ -10,6 +12,7 @@ size = Vector2(46, 64)
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1099124222]
+visible = false
 texture = ExtResource("1_4flbx")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1748049311]
@@ -17,3 +20,13 @@ zoom = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=840574466]
 shape = SubResource("RectangleShape2D_djfxq")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=466779611]
+position = Vector2(-1, 0)
+texture = ExtResource("3_qhqgy")
+
+[node name="Arm" type="Sprite2D" parent="." unique_id=1360913157]
+position = Vector2(-3, -7)
+rotation = 0.62133723
+texture = ExtResource("4_dqkch")
+offset = Vector2(1, 8)
