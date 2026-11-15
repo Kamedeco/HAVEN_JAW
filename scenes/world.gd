@@ -7,6 +7,7 @@ var build_cords = 800.0
 @export var Film : PackedScene
 @export var Can : PackedScene
 @onready var texture_progress_bar: TextureProgressBar = $Ui/TextureProgressBar
+@onready var anima: AnimationPlayer = $Ui/ColorRect/Anima
 
 @onready var rtl: RichTextLabel = $Ui/RichTextLabel
 @onready var tutorial: RichTextLabel = $Ui/Tutorial
@@ -37,12 +38,14 @@ func _ready() -> void:
 	if Global.attempt == 0:
 		$"1A".enabled = true
 		for i in tilemaps1.size():
+			$Cat.show()
 			tilemaps1[i].enabled = false
 		for i in tilemaps2.size():
 			tilemaps2[i].enabled = false
 		for i in tilemaps3.size():
 			tilemaps3[i].enabled = false
 	else:
+		$Cat.hide()
 		$"1A".enabled = false
 		for child in $Bushes.get_children():
 			if "visible" in child: 

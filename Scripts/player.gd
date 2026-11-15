@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var charecter: AnimatedSprite2D = $charecter
 @onready var animated_sprite_2d: AnimatedSprite2D = $Arm2/AnimatedSprite2D
 
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var my_direction = 1
 const SPEED = 300.0
@@ -46,6 +47,7 @@ func _physics_process(delta):
 			impulsed = false
 		# Handle jump.add
 		if Input.is_action_just_pressed("Jump") and is_on_floor():
+			$AnimationPlayer.play("jump")
 			velocity.y = JUMP_VELOCITY
 		# Get the input direction: -1, 0, 1
 		var direction = Input.get_axis("Left", "Right")
@@ -57,6 +59,8 @@ func _physics_process(delta):
 			
 		elif direction > 0:
 			charecter.flip_h = false
+		if Input.is_action_just_pressed("photo"):
+			$AnimationPlayer.play("Shutter")		
 		if Input.is_action_just_pressed("Interact") and is_on_floor():
 			pass
 			if interactable == true:
@@ -79,7 +83,7 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("shoot"):
 			if reload_time > 1 and Global.player_ammo >0:
 				shoot()
-				
+				$AnimationPlayer.play("Shoot")
 				Global.player_ammo -= 1
 				var vect = get_global_mouse_position() - position
 				vect = vect.normalized()*200
@@ -106,9 +110,11 @@ func _physics_process(delta):
 				velocity.x = direction * SPEED*0.8
 			elif impulsed == true and not is_on_floor():
 				velocity.x = SPEED*direction*0.8 + vect_x * jump_force
+				$AnimationPlayer.play("Walk")
 				#print("AAA")
 			elif impulsed == true and is_on_floor():
 				velocity.x = SPEED*direction + vect_x * jump_force
+				$AnimationPlayer.play("Walk")
 				#print("BBB")
 			if vect_x >0:
 				if velocity.x < vect_x:
