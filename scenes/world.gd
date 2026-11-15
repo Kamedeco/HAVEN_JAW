@@ -63,6 +63,12 @@ func _ready() -> void:
 		var skin3 = randi_range(0, 2)
 		tilemaps3[skin3].enabled = true
 	snapshot.play("No")
+	if Global.player_pos.x>10000:
+		dialogue.text = "[font_size=25] [center] I reached the house! Now I can deliver my pizza!"
+		animation_player.play("fade in")
+		Global.diaCount += 1
+		timer.start()
+		tutorial.text = "[font_size=32] [wave][rainbow] [center] YOU WIN!!!"
 	
 
 
@@ -70,7 +76,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	texture_progress_bar.value = Global.player_pos.x*0.1
+	texture_progress_bar.value = Global.player_pos.x*0.5
 	
 	print (str(Global.player_pos.x) + "  "+  str(build_cords))
 	if Global.player_pos.x > build_cords:
@@ -136,36 +142,37 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	
 func build() -> void:
 	print("BUILD")
-	if build_count == 0:
-		for i in tilemaps1.size():
-			tilemaps1[i].enabled = false
-		var skin = randi_range(0, 2)
-		tilemaps1[skin].enabled = true
-		tilemaps_2.position.x += 1800
-	elif build_count == 1:
-		for i in tilemaps2.size():
-			tilemaps2[i].enabled = false
-		var skin = randi_range(0, 2)
-		tilemaps2[skin].enabled = true
-		tilemaps_3.position.x += 1800
-	elif build_count == 2:
-		for i in tilemaps3.size():
-			tilemaps3[i].enabled = false
-		var skin = randi_range(0, 2)
-		tilemaps3[skin].enabled = true
-		tilemaps_4.position.x += 1800
-		build_count = -1
-	build_count += 1
-	build_cords += 600
-	print("TIME")
-	for i in randi_range(0, 3):
-		var Film = Film.instantiate()
-		add_child(Film)
-		Film.global_position.x = build_cords+randi_range(500, 1000)
-		Film.global_position.y = randi_range(-200, 200)
-	for i in randi_range(1, 2):
-		var Can = Can.instantiate()
-		add_child(Can)
-		Can.global_position.x = build_cords+randi_range(500, 1000)
-		Can.global_position.y = randi_range(-200, 200)
-	pass # Replace with function body.
+	if build_count <4300:
+		if build_count == 0:
+			for i in tilemaps1.size():
+				tilemaps1[i].enabled = false
+			var skin = randi_range(0, 2)
+			tilemaps1[skin].enabled = true
+			tilemaps_2.position.x += 1800
+		elif build_count == 1:
+			for i in tilemaps2.size():
+				tilemaps2[i].enabled = false
+			var skin = randi_range(0, 2)
+			tilemaps2[skin].enabled = true
+			tilemaps_3.position.x += 1800
+		elif build_count == 2:
+			for i in tilemaps3.size():
+				tilemaps3[i].enabled = false
+			var skin = randi_range(0, 2)
+			tilemaps3[skin].enabled = true
+			tilemaps_4.position.x += 1800
+			build_count = -1
+		build_count += 1
+		build_cords += 600
+		print("TIME")
+		for i in randi_range(0, 3):
+			var Film = Film.instantiate()
+			add_child(Film)
+			Film.global_position.x = build_cords+randi_range(500, 1000)
+			Film.global_position.y = randi_range(-200, 200)
+		for i in randi_range(1, 2):
+			var Can = Can.instantiate()
+			add_child(Can)
+			Can.global_position.x = build_cords+randi_range(500, 1000)
+			Can.global_position.y = randi_range(-200, 200)
+		pass # Replace with function body.
