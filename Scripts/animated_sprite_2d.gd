@@ -10,6 +10,6 @@ func _ready() -> void:
 
 
 func _on_animation_finished() -> void:
-	global_position.x = Global.player_pos.x + randi_range(500, 1000)
+	global_position.x = Global.player_pos.x + randi_range(-250, 250)
 	global_position.y = Global.player_pos.x + randi_range(-200, 200)
 	play("default")

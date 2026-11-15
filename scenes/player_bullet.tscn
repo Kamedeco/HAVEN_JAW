@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bxo4yw5ny4x" path="res://Tile sets/Bullet_GUN.png" id="1_4g3gs"]
 [ext_resource type="Script" uid="uid://b3qqms0oi7ceq" path="res://Scripts/player_bullet.gd" id="1_46jqs"]
+[ext_resource type="Texture2D" uid="uid://2mggvfqwqf0j" path="res://Sprites/light texture.png" id="3_0cue5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_46jqs"]
 atlas = ExtResource("1_4g3gs")
@@ -47,3 +48,8 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_djfxq")
 autoplay = "default"
 frame_progress = 0.6054761
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=345021732]
+color = Color(0, 0.46666667, 1, 1)
+texture = ExtResource("3_0cue5")
+texture_scale = 0.2

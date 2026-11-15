@@ -6,8 +6,10 @@ var build_cords = 800.0
 @onready var tilemaps_4: Node2D = $TILEMAPS4
 @export var Film : PackedScene
 @export var Can : PackedScene
+@export var Baddie : PackedScene
 @onready var texture_progress_bar: TextureProgressBar = $Ui/TextureProgressBar
 @onready var anima: AnimationPlayer = $Ui/ColorRect/Anima
+
 
 @onready var rtl: RichTextLabel = $Ui/RichTextLabel
 @onready var tutorial: RichTextLabel = $Ui/Tutorial
@@ -178,4 +180,9 @@ func build() -> void:
 			add_child(Can)
 			Can.global_position.x = build_cords+randi_range(500, 1000)
 			Can.global_position.y = randi_range(-200, 200)
+		for i in randi_range(1, 2):
+			var Bad = Baddie.instantiate()
+			add_child(Bad)
+			Bad.global_position.x = build_cords+randi_range(500, 1000)
+			Bad.global_position.y = randi_range(-200, 200)
 		pass # Replace with function body.
