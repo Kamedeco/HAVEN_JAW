@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://mxm4ogiqlneu"]
+
+[ext_resource type="Script" uid="uid://bwody4i82ij7j" path="res://scenes/enemies.gd" id="1_y16gg"]
+[ext_resource type="Texture2D" uid="uid://b6r8gtgpmrr5w" path="res://assets/head_enemy.png" id="2_q4yn1"]
+[ext_resource type="Texture2D" uid="uid://dniobsd7406d2" path="res://assets/body_enemy.png" id="3_ad2ka"]
+[ext_resource type="PackedScene" uid="uid://cnguwb5iengm1" path="res://scenes/projectile.tscn" id="4_i5e8t"]
+[ext_resource type="PackedScene" uid="uid://cn5j3rgk41guo" path="res://scenes/killzone.tscn" id="5_010eu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i5e8t"]
+radius = 101.99996
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_010eu"]
+size = Vector2(18.164536, 30.895859)
+
+[node name="enemy" type="CharacterBody2D" unique_id=1274718360 groups=["enemy"]]
+position = Vector2(-1, 96)
+rotation = -0.012706405
+script = ExtResource("1_y16gg")
+
+[node name="enemyBodySpr" type="Sprite2D" parent="." unique_id=52971797]
+position = Vector2(186, 94)
+texture = ExtResource("3_ad2ka")
+
+[node name="enemyHeadSpr" type="Sprite2D" parent="." unique_id=2046287068]
+position = Vector2(188, 87.99999)
+rotation = -0.00541315
+texture = ExtResource("2_q4yn1")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1667321821]
+
+[node name="detectionZone" type="CollisionShape2D" parent="Area2D" unique_id=2019335233]
+position = Vector2(188.84113, 92.40689)
+shape = SubResource("CircleShape2D_i5e8t")
+
+[node name="projectile" parent="." unique_id=1155205489 instance=ExtResource("4_i5e8t")]
+
+[node name="killzone" parent="." unique_id=1976426634 instance=ExtResource("5_010eu")]
+position = Vector2(187.70143, 103.393295)
+
+[node name="bodycol" type="CollisionShape2D" parent="killzone" unique_id=680473677]
+position = Vector2(0.91773987, -2.550583)
+shape = SubResource("RectangleShape2D_010eu")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="body_entered" from="projectile" to="." method="_on_projectile_body_entered"]

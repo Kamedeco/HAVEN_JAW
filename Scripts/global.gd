@@ -6,4 +6,8 @@ var checkpoint = Vector2(0, 0)
 var checkpointed = false
 var player_pos = Vector2(0, 0)
 var diaCount = 0
+<<<<<<< HEAD
 var attempt = 0
+=======
+var pExists = false
+>>>>>>> origin/enemies
