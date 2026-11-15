@@ -69,6 +69,8 @@ func _physics_process(delta):
 				charecter.play("Idle")
 			else:
 				charecter.play("Run")
+		else:
+			charecter.play("Falling")
 		##else:
 			##animated_sprite.play("jump")
 		
