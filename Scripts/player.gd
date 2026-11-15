@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var snapshot: AnimatedSprite2D = $Snapshot
 @onready var charecter: AnimatedSprite2D = $charecter
 @onready var animated_sprite_2d: AnimatedSprite2D = $Arm2/AnimatedSprite2D
-
+@export var My_bullet : PackedScene
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var my_direction = 1
@@ -93,6 +93,11 @@ func _physics_process(delta):
 				impulsed = true
 				reload_time = 0.0
 				velocity.y = vect.y*jump_force *-15
+				animated_sprite_2d.play("Flash")
+				var bullet = My_bullet.instantiate()
+				bullet.vect = vect
+				owner.add_child(bullet)
+				bullet.transform = $".".global_transform
 	#ANIMATION YIPPPEEE
 		var vect_anim = get_global_mouse_position() - position
 		var vect_anim_x = vect_anim.x
@@ -153,7 +158,7 @@ func _physics_process(delta):
 		##print(body.name)
 	Global.player_pos = global_position
 func shoot():
-	animated_sprite_2d.play("Flash")
+	
 	pass
 	
 func respawn():
