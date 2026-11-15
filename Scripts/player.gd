@@ -101,10 +101,10 @@ func _physics_process(delta):
 			velocity.x = direction * SPEED*0.8
 		elif impulsed == true and not is_on_floor():
 			velocity.x = SPEED*direction*0.8 + vect_x * jump_force
-			print("AAA")
+			#print("AAA")
 		elif impulsed == true and is_on_floor():
 			velocity.x = SPEED*direction + vect_x * jump_force
-			print("BBB")
+			#print("BBB")
 		if vect_x >0:
 			if velocity.x < vect_x:
 				vect_x = velocity.x
