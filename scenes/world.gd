@@ -4,6 +4,9 @@ var build_cords = 800.0
 @onready var tilemaps_2: Node2D = $TILEMAPS2
 @onready var tilemaps_3: Node2D = $TILEMAPS3
 @onready var tilemaps_4: Node2D = $TILEMAPS4
+@export var Film : PackedScene
+@export var Can : PackedScene
+@onready var texture_progress_bar: TextureProgressBar = $Ui/TextureProgressBar
 
 @onready var rtl: RichTextLabel = $Ui/RichTextLabel
 @onready var tutorial: RichTextLabel = $Ui/Tutorial
@@ -32,6 +35,12 @@ func _ready() -> void:
 	print(Global.attempt)
 	if Global.attempt == 0:
 		$"1A".enabled = true
+		for i in tilemaps1.size():
+			tilemaps1[i].enabled = false
+		for i in tilemaps2.size():
+			tilemaps2[i].enabled = false
+		for i in tilemaps3.size():
+			tilemaps3[i].enabled = false
 	else:
 		$"1A".enabled = false
 		for child in $Bushes.get_children():
@@ -59,6 +68,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	texture_progress_bar.value = Global.player_pos.x*0.1
+	
 	print (str(Global.player_pos.x) + "  "+  str(build_cords))
 	if Global.player_pos.x > build_cords:
 		build()
@@ -89,20 +101,20 @@ func _process(delta: float) -> void:
 			timer.start()
 			
 			
-		if Input.is_action_just_pressed("photo"):
-			snapshot.show()
-			snapshot.position = Global.player_pos
-			snapshot.play("Rep")
-		if Global.checkpointed == false:
-			snapshot.play("no")
-			print(Global.checkpointed)
-		else:
-			pass
-		rtl.text = "[center][b]Film: [/b]" + str(Global.player_film) + "[/center] + Checkpoint? " + str(Global.checkpointed) + " Ammo " + str(Global.player_ammo) 
+	if Input.is_action_just_pressed("photo"):
+		snapshot.show()
+		snapshot.position = Global.player_pos
+		snapshot.play("Rep")
+	if Global.checkpointed == false:
+		snapshot.play("no")
+		print(Global.checkpointed)
+	else:
+		pass
+	rtl.text = "[center][b]Film: [/b]" + str(Global.player_film) + "[/center] + Checkpoint? " + str(Global.checkpointed) + " Ammo " + str(Global.player_ammo) 
 			#tutorial.text = "[font_size=32] [wave][rainbow] [center] Right click to take a photo. 
 	#If you die your photo location will be your respawn point.
 		##	dialogue.text = "[font_size=32][center]I need to deliver this pizza. "
-
+	
 
 func _on_timer_timeout() -> void:
 	print("TIME")
@@ -138,4 +150,14 @@ func build() -> void:
 	build_count += 1
 	build_cords += 600
 	print("TIME")
+	for i in randi_range(0, 3):
+		var Film = Film.instantiate()
+		add_child(Film)
+		Film.global_position.x = build_cords+randi_range(500, 1000)
+		Film.global_position.y = randi_range(-200, 200)
+	for i in randi_range(1, 2):
+		var Can = Can.instantiate()
+		add_child(Can)
+		Can.global_position.x = build_cords+randi_range(500, 1000)
+		Can.global_position.y = randi_range(-200, 200)
 	pass # Replace with function body.

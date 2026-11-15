@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bbdqwflodh1p8"]
+
+[ext_resource type="Script" uid="uid://ds766qa6dkt14" path="res://texture_progress_bar.gd" id="1_qgutq"]
+
+[sub_resource type="Gradient" id="Gradient_qgutq"]
+offsets = PackedFloat32Array(0, 0.8433735)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jhx03"]
+gradient = SubResource("Gradient_qgutq")
+
+[sub_resource type="Gradient" id="Gradient_ifch1"]
+offsets = PackedFloat32Array(0, 0.9935065)
+colors = PackedColorArray(0, 0, 0, 1, 0.16233766, 0.16233766, 0.16233766, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o8fc1"]
+gradient = SubResource("Gradient_ifch1")
+
+[sub_resource type="Gradient" id="Gradient_c4568"]
+offsets = PackedFloat32Array(0, 0.071428575, 0.65584415, 0.84415585, 0.9350649)
+colors = PackedColorArray(0, 0, 0.5647059, 1, 0.07058824, 0.07058824, 1, 1, 0.48972368, 0.43619883, 0.9999849, 1, 0.60415334, 0.59551555, 0.9999985, 1, 0.48972368, 0.43619883, 0.9999849, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ot542"]
+gradient = SubResource("Gradient_c4568")
+
+[node name="Progress" type="Sprite2D" unique_id=2142579514]
+visible = false
+texture = SubResource("GradientTexture2D_jhx03")
+script = ExtResource("1_qgutq")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1270842082]
+offset_right = 40.0
+offset_bottom = 40.0
+min_value = 1.0
+max_value = 5000.0
+value = 1.0
+texture_under = SubResource("GradientTexture2D_o8fc1")
+texture_progress = SubResource("GradientTexture2D_ot542")

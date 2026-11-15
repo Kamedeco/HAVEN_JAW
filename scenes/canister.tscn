@@ -201,6 +201,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djfxq"]
 
 [node name="Canister" type="Area2D" unique_id=2027450342]
+scale = Vector2(2, 2)
 script = ExtResource("1_kdhx3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1629961406]
