@@ -5,20 +5,28 @@
 [ext_resource type="Texture2D" uid="uid://dnus4xqwurowv" path="res://assets/arm.png" id="4_dqkch"]
 [ext_resource type="Texture2D" uid="uid://iuujb0xvlsg" path="res://assets/player-snapshot-anim/pixil-frame-4.png" id="5_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://dnmaksrul5raf" path="res://assets/arm-mid.png" id="5_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://c82h53swuaavu" path="res://assets/flash-animation/pixil-frame-0.png" id="5_ujl30"]
+[ext_resource type="Texture2D" uid="uid://d0atfrw0ssidn" path="res://assets/flash-animation/pixil-frame-1.png" id="6_31cv2"]
 [ext_resource type="Texture2D" uid="uid://bnvgl24cdvmjy" path="res://assets/arm-straight.png" id="6_fjrip"]
 [ext_resource type="Texture2D" uid="uid://dfqm0jqsik4bb" path="res://assets/player-snapshot-anim/pixil-frame-3.png" id="6_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://u0ri4dth3cwd" path="res://assets/player_run/pixil-frame-0.png" id="7_3v2ag"]
 [ext_resource type="Texture2D" uid="uid://cnta16ialkddy" path="res://assets/player-snapshot-anim/pixil-frame-2.png" id="7_fulsm"]
+[ext_resource type="Texture2D" uid="uid://d3xq2w2w8e2pb" path="res://assets/flash-animation/pixil-frame-2.png" id="7_pf23h"]
 [ext_resource type="Texture2D" uid="uid://bq2uwbd0ho2ea" path="res://assets/player-snapshot-anim/pixil-frame-1.png" id="8_4r5pv"]
+[ext_resource type="Texture2D" uid="uid://v8h3nw3iuing" path="res://assets/flash-animation/pixil-frame-3.png" id="8_dt7fs"]
 [ext_resource type="Texture2D" uid="uid://dqa6uk8lpteb7" path="res://assets/player_run/pixil-frame-1.png" id="8_jej6c"]
 [ext_resource type="Texture2D" uid="uid://bpjsy6a4u4tyj" path="res://assets/player-snapshot-anim/pixil-frame-0.png" id="9_60mlk"]
 [ext_resource type="Texture2D" uid="uid://6epn5s1n8dwx" path="res://assets/player_run/pixil-frame-2.png" id="9_f1ej7"]
+[ext_resource type="Texture2D" uid="uid://dsh7y7qc3mns7" path="res://assets/flash-animation/pixil-frame-4.png" id="9_wqfne"]
 [ext_resource type="Texture2D" uid="uid://b8gcgergtt7da" path="res://assets/player-falling/pixil-frame-0.png" id="10_4r5pv"]
 [ext_resource type="Texture2D" uid="uid://qy2guxiqp1vb" path="res://assets/player_run/pixil-frame-3.png" id="10_oprun"]
+[ext_resource type="Texture2D" uid="uid://bojasvoqib26y" path="res://assets/flash-animation/pixil-frame-5.png" id="10_wnwbv"]
 [ext_resource type="Texture2D" uid="uid://3353c8xrq5td" path="res://assets/player-falling/pixil-frame-1.png" id="11_60mlk"]
 [ext_resource type="Texture2D" uid="uid://qxpligrugo5g" path="res://assets/player_run/pixil-frame-4.png" id="11_a8ls1"]
+[ext_resource type="Texture2D" uid="uid://dvj78hbqw2b4o" path="res://Tile sets/TIRED.png" id="11_gl8cc"]
 [ext_resource type="Texture2D" uid="uid://brqwshh0keelc" path="res://assets/player-falling/pixil-frame-2.png" id="12_i4ail"]
 [ext_resource type="Texture2D" uid="uid://djekkfe0lawef" path="res://assets/player_run/pixil-frame-5.png" id="12_qfm1y"]
+[ext_resource type="Texture2D" uid="uid://2mggvfqwqf0j" path="res://Sprites/light texture.png" id="27_31cv2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k0juu"]
 radius = 15.0
@@ -58,7 +66,46 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_487ah"]
+atlas = ExtResource("5_ujl30")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ss3c0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_487ah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_31cv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pf23h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_dt7fs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wqfne")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wnwbv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gl8cc")
+}],
+"loop": 0,
+"name": &"Flash",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_gl8cc")
+}],
+"loop": 1,
+"name": &"Off",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h58ql"]
 atlas = ExtResource("5_a8ls1")
@@ -182,6 +229,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=206166448 groups=["player"]]
+z_index = 2
 script = ExtResource("1_g2els")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1748049311]
@@ -199,7 +247,11 @@ animation = &"mid"
 offset = Vector2(1, 8)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Arm2" unique_id=1559001874]
+position = Vector2(27, 4)
 sprite_frames = SubResource("SpriteFrames_ss3c0")
+animation = &"Flash"
+frame = 6
+frame_progress = 1.0
 
 [node name="charecter" type="AnimatedSprite2D" parent="." unique_id=1622943215]
 sprite_frames = SubResource("SpriteFrames_ot542")
@@ -207,5 +259,12 @@ animation = &"Falling"
 frame_progress = 0.92755693
 
 [node name="Timer" type="Timer" parent="." unique_id=904975896]
+wait_time = 0.5
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1556956377]
+z_index = -7
+color = Color(0.51718444, 0.5171845, 0.5171844, 1)
+range_z_max = 1
+texture = ExtResource("27_31cv2")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

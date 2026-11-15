@@ -3011,7 +3011,6 @@ sources/2 = SubResource("TileSetAtlasSource_q5onr")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_djfxq"]
 
 [sub_resource type="Animation" id="Animation_4mrxx"]
-length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -3105,6 +3104,43 @@ gradient = SubResource("Gradient_c4568")
 width = 500
 height = 40
 
+[sub_resource type="Animation" id="Animation_e3hyu"]
+resource_name = "Flash"
+length = 1.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.4862745), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q5onr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jhx03"]
+_data = {
+&"Flash": SubResource("Animation_e3hyu"),
+&"RESET": SubResource("Animation_q5onr")
+}
+
 [node name="world" type="Node2D" unique_id=1142360305]
 script = ExtResource("1_qfnet")
 Film = ExtResource("3_4wyf3")
@@ -3115,7 +3151,6 @@ position = Vector2(1010, -124)
 scale = Vector2(1, 1)
 
 [node name="Player" parent="." unique_id=206166448 instance=ExtResource("1_nnsk1")]
-z_index = 2
 position = Vector2(-190, -7)
 
 [node name="Area2D" parent="." unique_id=567670627 instance=ExtResource("3_4wyf3")]
@@ -3195,13 +3230,30 @@ offset_bottom = 40.0
 bbcode_enabled = true
 text = "[wave]LEVEL PROGRESS"
 
+[node name="ColorRect" type="ColorRect" parent="Ui" unique_id=781118979]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(56.977596, 81.600006)
+
+[node name="Anima" type="AnimationPlayer" parent="Ui/ColorRect" unique_id=1679469142]
+libraries/ = SubResource("AnimationLibrary_jhx03")
+
+[node name="Shadow" type="ColorRect" parent="Ui" unique_id=698551041]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(56.824932, 81.600006)
+color = Color(1, 1, 1, 0.2784314)
+
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=490663853]
+z_index = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -114.5
-offset_right = 114.5
-offset_bottom = 136.0
+offset_left = 1174.0
+offset_top = -141.0
+offset_right = 1403.0
+offset_bottom = -5.0
 grow_horizontal = 2
 bbcode_enabled = true
 text = "[wave][rainbow] [center] Collect film to place more respawn points."
@@ -3343,6 +3395,10 @@ scroll_scale = Vector2(0.2, 0.2)
 position = Vector2(388, 519)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_w7kh3")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1049937017]
+scale = Vector2(1.0000001, 1)
+color = Color(0.5564192, 0.4124861, 0.30548692, 1)
 
 [connection signal="animation_finished" from="Ui/Dialogue/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

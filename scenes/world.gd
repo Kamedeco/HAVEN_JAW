@@ -32,6 +32,7 @@ var build_cords = 800.0
 	]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Ui/ColorRect/Anima.play("Flash")
 	print(Global.attempt)
 	if Global.attempt == 0:
 		$"1A".enabled = true
@@ -76,6 +77,7 @@ func _process(delta: float) -> void:
 		build()
 		print("BUILD")
 	if Global.attempt == 0:
+		$RichTextLabel.show()
 		if Global.player_pos.x <0:
 			tutorial.text = "[font_size=32] [wave][rainbow] [center] WASD TO MOVE."
 		elif Global.player_pos.x <120:
@@ -99,12 +101,18 @@ func _process(delta: float) -> void:
 			animation_player.play("fade in")
 			Global.diaCount += 1
 			timer.start()
-			
+	else: $RichTextLabel.hide()
 			
 	if Input.is_action_just_pressed("photo"):
-		snapshot.show()
-		snapshot.position = Global.player_pos
-		snapshot.play("Rep")
+		if Global.player_film >0: 
+			$Ui/ColorRect/Anima.play("Flash")
+			snapshot.show()
+			snapshot.position = Global.player_pos
+			snapshot.play("Rep")
+			Global.checkpoint = Global.player_pos
+			Global.checkpointed = true
+			print(Global.checkpoint)
+			Global.player_film -= 1
 	if Global.checkpointed == false:
 		snapshot.play("no")
 		print(Global.checkpointed)

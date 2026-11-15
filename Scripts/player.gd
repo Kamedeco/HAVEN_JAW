@@ -2,6 +2,7 @@ extends CharacterBody2D
 @onready var arm_2: AnimatedSprite2D = $Arm2
 @onready var snapshot: AnimatedSprite2D = $Snapshot
 @onready var charecter: AnimatedSprite2D = $charecter
+@onready var animated_sprite_2d: AnimatedSprite2D = $Arm2/AnimatedSprite2D
 
 
 var my_direction = 1
@@ -20,6 +21,7 @@ var reload_time = 0.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 ##@onready var animated_sprite = $AnimatedSprite2D
 func _on_ready():
+	animated_sprite_2d.play("Flash")
 	Global.player_ammo = 5
 	Global.player_film = 5
 	Global.film_multiple = 1
@@ -76,7 +78,7 @@ func _physics_process(delta):
 		
 		# Apply movement
 		if Input.is_action_just_pressed("shoot"):
-			if reload_time > 1:
+			if reload_time > 1 and Global.player_ammo >0:
 				shoot()
 				
 				Global.player_ammo -= 1
@@ -141,18 +143,12 @@ func _physics_process(delta):
 		move_and_slide()
 		#print(impulsed)
 
-		if Input.is_action_just_pressed("photo"):
-			Global.checkpoint = global_position
-			Global.checkpointed = true
-			print(Global.checkpoint)
-			Global.player_film -= 1
-
 	##func _on_vending_machine_body_entered(body: Node2D) -> void:
 		##interactable = true
 		##print(body.name)
 	Global.player_pos = global_position
 func shoot():
-	
+	animated_sprite_2d.play("Flash")
 	pass
 	
 func respawn():
