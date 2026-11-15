@@ -15,7 +15,12 @@
 [ext_resource type="Texture2D" uid="uid://bdm3d8reqw85w" path="res://Tile sets/CAT.png" id="13_jhx03"]
 [ext_resource type="AudioStream" uid="uid://btsosfijmft4a" path="res://assets/haven_sounds/Haven OST.mp3" id="14_o8fc1"]
 [ext_resource type="PackedScene" uid="uid://mxm4ogiqlneu" path="res://scenes/enemies.tscn" id="15_xo05s"]
+[ext_resource type="AudioStream" uid="uid://bt1xw3hbf65o2" path="res://assets/haven_sounds/haven_extended.mp3" id="16_7iits"]
 [ext_resource type="PackedScene" uid="uid://dwk28gyu3uu2j" path="res://scenes/WIND.tscn" id="16_dss4m"]
+[ext_resource type="Texture2D" uid="uid://buxy7jd45xvj0" path="res://assets/treesForeground2.png" id="17_7t5mc"]
+[ext_resource type="Texture2D" uid="uid://c71ctofkcy4rm" path="res://assets/treesForeground.png" id="18_lakw3"]
+[ext_resource type="Texture2D" uid="uid://rb5ib0eqi0u6" path="res://assets/forestback.png" id="19_pm21f"]
+[ext_resource type="Texture2D" uid="uid://dwdafn4a2ar88" path="res://assets/Firefly_RemoveBackground.png" id="20_2lf6f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k0juu"]
 texture = ExtResource("4_k0juu")
@@ -3395,7 +3400,7 @@ tile_set = SubResource("TileSet_ss3c0")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1423774367]
 z_index = -4
-scroll_scale = Vector2(0.05, 0.05)
+scroll_scale = Vector2(0.02, 0.02)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=494937965]
 position = Vector2(755, 632)
@@ -3426,7 +3431,7 @@ stream = ExtResource("14_o8fc1")
 autoplay = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=199458156]
-stream = ExtResource("14_o8fc1")
+stream = ExtResource("16_7iits")
 autoplay = true
 
 [node name="enemy" parent="." unique_id=1274718360 instance=ExtResource("15_xo05s")]
@@ -3441,6 +3446,161 @@ position = Vector2(1546.0001, -176.00003)
 [node name="AnimatedSprite2D4" parent="." unique_id=91031862 instance=ExtResource("16_dss4m")]
 
 [node name="AnimatedSprite2D5" parent="." unique_id=1910910730 instance=ExtResource("16_dss4m")]
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=513587749]
+scroll_scale = Vector2(1.3, 1.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=1194680337]
+z_index = 1
+position = Vector2(67, 162)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D2" unique_id=77927915]
+z_index = 1
+position = Vector2(695, 245)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax2D2" unique_id=1181725830]
+z_index = 1
+position = Vector2(1320, 135)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallax2D2" unique_id=750499130]
+z_index = 1
+position = Vector2(1569, 176)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Parallax2D2" unique_id=2078078572]
+z_index = 1
+position = Vector2(3406, 148)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Parallax2D2" unique_id=1661033159]
+z_index = 1
+position = Vector2(3630, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Parallax2D2" unique_id=326080186]
+z_index = 1
+position = Vector2(4507, 221)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Parallax2D2" unique_id=210696563]
+z_index = 1
+position = Vector2(4932, 231)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Parallax2D2" unique_id=550549065]
+z_index = 1
+position = Vector2(5923, 245)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Parallax2D2" unique_id=1317553661]
+z_index = 1
+position = Vector2(6524, 179)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Parallax2D2" unique_id=456565179]
+z_index = 1
+position = Vector2(6755, 245)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Parallax2D2" unique_id=139700301]
+z_index = 1
+position = Vector2(7216, 167)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Parallax2D2" unique_id=2139878428]
+z_index = 1
+position = Vector2(7606, 134)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Parallax2D2" unique_id=72136084]
+z_index = 1
+position = Vector2(7956, 156)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Parallax2D2" unique_id=393809379]
+z_index = 1
+position = Vector2(8462, 100)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="Sprite2D16" type="Sprite2D" parent="Parallax2D2" unique_id=2081277571]
+z_index = 1
+position = Vector2(8946, 167)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="Sprite2D17" type="Sprite2D" parent="Parallax2D2" unique_id=354657960]
+z_index = 1
+position = Vector2(9352, 95)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="Sprite2D18" type="Sprite2D" parent="Parallax2D2" unique_id=210095826]
+z_index = 1
+position = Vector2(9352, 95)
+scale = Vector2(2, 2)
+texture = ExtResource("17_7t5mc")
+
+[node name="TREE2" type="Sprite2D" parent="Parallax2D2" unique_id=1622694714]
+z_index = 4
+position = Vector2(100, -78)
+scale = Vector2(4, 4)
+texture = ExtResource("18_lakw3")
+
+[node name="TREE3" type="Sprite2D" parent="Parallax2D2" unique_id=409335279]
+z_index = 4
+position = Vector2(2429, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("18_lakw3")
+
+[node name="TREE4" type="Sprite2D" parent="Parallax2D2" unique_id=916611012]
+z_index = 4
+position = Vector2(5247, -50)
+scale = Vector2(4, 4)
+texture = ExtResource("18_lakw3")
+
+[node name="TREE5" type="Sprite2D" parent="Parallax2D2" unique_id=1679453328]
+z_index = 4
+position = Vector2(8360, -62)
+scale = Vector2(4, 4)
+texture = ExtResource("18_lakw3")
+
+[node name="Parallax2D3" type="Parallax2D" parent="." unique_id=768703495]
+scroll_scale = Vector2(0.3, 0.3)
+scroll_offset = Vector2(2068, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3" unique_id=1308449283]
+z_index = -3
+position = Vector2(-59, 316)
+scale = Vector2(8, 8)
+texture = ExtResource("19_pm21f")
+
+[node name="Parallax2D4" type="Parallax2D" parent="." unique_id=1858660171]
+scroll_scale = Vector2(0.4, 0.4)
+scroll_offset = Vector2(2, 140)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D4" unique_id=1444545988]
+z_index = -4
+position = Vector2(3091, 156)
+scale = Vector2(8, 8)
+texture = ExtResource("20_2lf6f")
 
 [connection signal="animation_finished" from="Ui/Dialogue/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
