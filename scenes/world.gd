@@ -35,6 +35,8 @@ var build_cords = 800.0
 	]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.player_ammo = 10
+	Global.player_film = 3
 	$Ui/ColorRect/Anima.play("Flash")
 	print(Global.attempt)
 	if Global.attempt == 0:
@@ -180,7 +182,7 @@ func build() -> void:
 			add_child(Can)
 			Can.global_position.x = build_cords+randi_range(500, 1000)
 			Can.global_position.y = randi_range(-200, 200)
-		for i in randi_range(1, 2):
+		for i in randi_range(0, 1):
 			var Bad = Baddie.instantiate()
 			add_child(Bad)
 			Bad.global_position.x = build_cords+randi_range(500, 1000)

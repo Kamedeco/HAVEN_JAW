@@ -9,6 +9,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_010eu"]
 size = Vector2(12.138786, 20.049156)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djfxq"]
+
 [node name="enemy" type="CharacterBody2D" unique_id=1274718360 groups=["enemy"]]
 position = Vector2(-191, -94)
 rotation = -0.012706405
@@ -35,3 +37,8 @@ position = Vector2(188.803, 95.40665)
 color = Color(0.99999994, 0.174173, 0.12721539, 1)
 texture = ExtResource("5_pfngh")
 texture_scale = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1127939438]
+position = Vector2(187.77766, 97.393776)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_djfxq")

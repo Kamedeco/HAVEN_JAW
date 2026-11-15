@@ -3404,7 +3404,7 @@ texture = ExtResource("10_w7kh3")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1049937017]
 scale = Vector2(1.0000001, 1)
-color = Color(0.5564192, 0.4124861, 0.30548692, 1)
+color = Color(0.9204972, 0.8393495, 0.78347707, 1)
 
 [node name="Cat2" type="Sprite2D" parent="." unique_id=130205837]
 position = Vector2(435, -40)
