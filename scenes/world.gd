@@ -23,7 +23,8 @@ func _process(delta: float) -> void:
 			tutorial.text = "[font_size=32] [wave][rainbow] [center] Collect canisters to collect more ammo for jumps!"
 	elif Global.player_pos.x <1500 and Global.player_pos.x >1200:
 		tutorial.text = "[font_size=32] [wave][rainbow] [center] RIGHT CLICK TO TAKE A PHOTO (place checkpoint, each checkpoint can only be used once)"
-	
+	elif Global.player_pos.x <1800 and Global.player_pos.x >1500:
+		tutorial.text = "[font_size=32] [wave][rainbow] [center] GOOD)"
 	if Global.player_pos.x > 300 and Global.diaCount == 0:
 		dialogue.text = "[font_size=25] [center] I have to deliver this pizza."
 		animation_player.play("fade in")
@@ -49,3 +50,9 @@ func _on_timer_timeout() -> void:
 	print("TIME")
 	animation_player.play("fade out")
 	pass # Replace with function body.
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "fade out":
+		dialogue.text = ""
+	
