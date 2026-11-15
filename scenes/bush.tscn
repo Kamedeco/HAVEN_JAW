@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bojjphrs12pf3"]
 
 [ext_resource type="Texture2D" uid="uid://boyx5vag5of5c" path="res://assets/plant_anim.png" id="1_ehqem"]
+[ext_resource type="Texture2D" uid="uid://bwwfxmjx70akt" path="res://assets/plant1.png" id="2_6ftm5"]
 [ext_resource type="Script" uid="uid://clw64w31by121" path="res://Scripts/bush.gd" id="2_tu87o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ftm5"]
@@ -52,10 +53,18 @@ animations = [{
 "loop": 1,
 "name": &"4",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6ftm5")
+}],
+"loop": 1,
+"name": &"5",
+"speed": 5.0
 }]
 
 [node name="Bush" type="AnimatedSprite2D" unique_id=1983867055]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_djfxq")
-animation = &"1"
+animation = &"5"
 script = ExtResource("2_tu87o")

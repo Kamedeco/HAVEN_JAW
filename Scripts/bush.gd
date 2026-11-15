@@ -4,7 +4,7 @@ var skin
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-	skin = randi_range(1, 4)
+	skin = randi_range(1, 5)
 	play(str(skin))
 
 
