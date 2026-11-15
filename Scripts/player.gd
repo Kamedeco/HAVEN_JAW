@@ -1,6 +1,5 @@
 extends CharacterBody2D
 @onready var arm_2: AnimatedSprite2D = $Arm2
-
 var my_direction = 1
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -77,7 +76,7 @@ func _physics_process(delta):
 			var vect = get_global_mouse_position() - position
 			vect = vect.normalized()*200
 			vect_x = vect.x*jump_force *-250
-			vect_y = vect.y*jump_force *0.1
+			vect_y = vect.y*jump_force *0.2
 			#print(velocity.x)
 			impulsed = true
 			reload_time = 0.0
@@ -143,7 +142,7 @@ func _physics_process(delta):
 ##func _on_vending_machine_body_entered(body: Node2D) -> void:
 	##interactable = true
 	##print(body.name)
-	
+	Global.player_pos = global_position
 func shoot():
 	
 	pass

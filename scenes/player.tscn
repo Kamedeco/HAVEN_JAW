@@ -45,7 +45,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=206166448]
+[node name="Player" type="CharacterBody2D" unique_id=206166448 groups=["player"]]
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1099124222]
